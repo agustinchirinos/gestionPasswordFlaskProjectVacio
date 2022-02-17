@@ -1,0 +1,18 @@
+{% macro generarForm(form) %}
+    {{ form.csrf_token() }}
+    {% for field in form %}
+        <div class="mb-3 mt-3">
+            {% if field.type != 'CSRFTokenField' and field.type != "HiddenField"  %}
+                {{ field.label(class="form-label") }}
+                {{ field(class="form-control") }}
+                <ul class="text-danger">
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                {{ field() }}
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endmacro %}
