@@ -7,7 +7,8 @@ from app import db
 
 
 class Usuario(db.Model):
-    username = db.Column(db.String(20), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(20), unique=True,nullable=False)
     password = db.Column(db.String())
     passwordcifrada = db.Column(db.LargeBinary)
     dni = db.Column(db.String(10),nullable=False,unique=True)
