@@ -14,6 +14,10 @@ PEEPER = "ClaveSecretaPeeper"
 def index():  # put application's code here
     return render_template('index.html')
 
+@password.route("/welcome/")
+def welcome():
+    return render_template("welcome.html")
+
 @password.route("/loginenclaro/", methods=["GET","POST"])
 def loginenclaro():
     error = ""

@@ -28,6 +28,14 @@ class Usuario(db.Model):
         except:
             raise
 
+    @staticmethod
+    def get_by_id(id):
+        return Usuario.query.get(id)
+
+    @staticmethod
+    def get_by_username(username):
+        return Usuario.query.filter_by(username=username).first()
+
 
     def set_password(self, password):
         # self.password = generate_password_hash(password, method='pbkdf2:sha512')
